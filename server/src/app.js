@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import userRouter from "./routes/user.routes";
+import userRouter from "./routes/user.routes.js";
 
 const app = express();
 
@@ -16,6 +16,6 @@ app.get("/ping", (_req, res) => {
 });
 
 //users
-app.use("/api/v2/user", userRouter);
+app.use("/api/v1/user", userRouter);
 
 export default app;

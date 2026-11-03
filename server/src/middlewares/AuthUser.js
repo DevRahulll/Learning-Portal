@@ -1,4 +1,4 @@
-import { verifyToken } from "../utils/token";
+import { verifyToken } from "../utils/token.js";
 
 const isAuthenticated = async (req, res, next) => {
     try {
@@ -16,7 +16,7 @@ const isAuthenticated = async (req, res, next) => {
                 success: false,
             });
         }
-        console.log("Auth token", decode);
+
         req.id = decode.userId;
 
         next();

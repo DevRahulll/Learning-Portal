@@ -5,7 +5,7 @@ export const generateToken = async (payload) => {
         { userId: payload._id },
         process.env.SECRET_KEY,
         {
-            expiresIn: process.env.EXPIRESIN || "1d",
+            expiresIn: "1d",
         },
     );
 

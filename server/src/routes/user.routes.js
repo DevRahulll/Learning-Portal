@@ -5,8 +5,8 @@ import {
     logout,
     register,
     updateProfile,
-} from "../controllers/user.controllers";
-import isAuthenticated from "../middlewares/AuthUser";
+} from "../controllers/user.controllers.js";
+import isAuthenticated from "../middlewares/AuthUser.js";
 
 const userRouter = express.Router();
 

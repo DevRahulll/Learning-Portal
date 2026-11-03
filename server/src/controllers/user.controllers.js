@@ -50,7 +50,7 @@ export const login = async (req, res) => {
             });
         }
 
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email }).select("+password");
         if (!user) {
             return res.status(400).json({
                 success: false,
@@ -68,6 +68,9 @@ export const login = async (req, res) => {
 
         const token = await generateToken(user);
 
+        const userObj = user.toObject();
+        delete userObj.password;
+
         return res
             .status(200)
             .cookie("token", token, {
@@ -78,7 +81,7 @@ export const login = async (req, res) => {
             .json({
                 success: true,
                 message: `Welcome back ${user.name}`,
-                user,
+                user: userObj,
             });
     } catch (error) {
         console.log("Something went wrong", error);
