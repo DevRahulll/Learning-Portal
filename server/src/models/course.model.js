@@ -40,6 +40,12 @@ const courseSchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        lectures: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Lecture",
+            },
+        ],
     },
     { timestamps: true },
 );
