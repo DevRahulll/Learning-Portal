@@ -3,6 +3,9 @@ import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.routes.js";
+import mediaRouter from "./routes/media.route.js";
+import courseRouter from "./routes/course.route.js";
+import courseProgressRouter from "./routes/courseProgress.route.js";
 
 const app = express();
 
@@ -20,7 +23,10 @@ app.get("/ping", (_req, res) => {
     res.send("<h1>PONG</h1>");
 });
 
-//users
+//api
+app.use("/api/v1/media", mediaRouter);
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/course", courseRouter);
+app.use("/api/v1/progress", courseProgressRouter);
 
 export default app;
